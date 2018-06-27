@@ -1,0 +1,27 @@
+.autoSourceLangSlider{
+    margin-left: 16px;
+}
+.fieldSets{
+    user-select: none;
+}
+fieldset{
+    margin: 0;
+}
+.containerExt{
+    width: 500px;
+}
+.readyButton{
+    position: absolute;
+    right: 16px;
+    top: 8px;
+    z-index: 5;
+}
+.mainSelect{
+    background: #d3eeff;
+}
+.exitBlock{
+    margin: 16px 16px 8px 16px;
+}
+.translateEvent>mat-radio-button{
+    padding: 0  4px 4px 4px;
+}

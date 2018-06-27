@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="../material-min/material.min.css">
+	<link rel="stylesheet" href="translator-extension.css">
+	<script src="../material-min/material.min.js"></script>
+	<script src="translator-extension.js"></script>
+</head>
+<body>
+	<div id="extensionContainer" class="extensionContainer">
+		<div class="extensionToolBar">
+			<button id="ms-btn" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored messageButton">
+				<i class="material-icons">sms</i>
+				<span class="messageMarker">0</span>
+			</button>
+			<div class="mdl-tooltip" data-mdl-for="ms-btn">Сообщения</div>
+			<button id="btn-go" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
+				<i class="material-icons">loop</i>
+			</button>
+			<div class="mdl-tooltip" data-mdl-for="btn-go" >Перевести</div>
+			<button id="btn-to" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
+				<i class="material-icons">fullscreen</i>
+			</button>
+			<div class="mdl-tooltip" data-mdl-for="btn-to" >Подробнее</div>
+			<button id="btn-cls" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
+				<i class="material-icons">close</i>
+			</button>
+			<div class="mdl-tooltip" data-mdl-for="btn-cls" >Закрыть</div>
+		</div>
+		<section class="messageSection"></section>
+		<div class="sourceLanguageField" >
+			<div class="sourceLanguageText">En</div>
+			<div id="sourceLanguage" class="sourceLanguage" contenteditable="true"></div>
+		</div>
+		<hr style="width: 100%; margin: 0">
+		<div class="targetLanguageField" >
+			<div class="targetLanguageText">Ru</div>
+			<div class="targetLanguage">
+				<span class="targetLanguagePlaceholder"></span>
+				<div class="targetSpinner mdl-spinner mdl-spinner--single-color mdl-js-spinner"></div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+

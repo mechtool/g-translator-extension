@@ -1,0 +1,65 @@
+<div class="containerExt" [formGroup]="mainExtensionGroup">
+		<div class="exitBlock" style="display: flex; flex-direction: row">
+			<mat-slide-toggle class="exitBlockSlider" formControlName="exitBlockSlider">Включить перевод</mat-slide-toggle>
+			<mat-slide-toggle #autoSource class="autoSourceLangSlider" formControlName="autoSource">Автоопределение</mat-slide-toggle>
+			<div class="readyButton" >
+				<button mat-icon-button color="primary" matTooltip="Сохранить"  [matTooltipPosition]="'left'" (click)="onClickPopup()">
+					<mat-icon svgIcon="ready-icon"></mat-icon>
+				</button>
+			</div>
+		</div>
+		<div class="fieldSets">
+			<div style="display: flex; flex-direction: row; justify-content: space-evenly;">
+				<fieldset style="display: flex; flex-direction: column; width: 48%">
+					<legend>Языки</legend>
+					<mat-form-field class="sourceLanguage" >
+						<mat-select  placeholder="Язык источника" panelClass="mainSelect" formControlName="sourceLanguage" [disabled]="autoSource.checked">
+							<mat-option *ngFor="let lang of languageList" [value]="lang.text">
+								<span class="optionText">{{lang.text}}</span>
+							</mat-option>
+						</mat-select>
+					</mat-form-field>
+					<mat-form-field class="translateLanguage">
+						<mat-select placeholder="Язык перевода" panelClass="mainSelect" formControlName="targetLanguage" required >
+							<mat-option *ngFor="let lang of languageList" [value]="lang.text">
+								<span class="optionText">{{lang.text}}</span>
+							</mat-option>
+						</mat-select>
+					</mat-form-field>
+				</fieldset>
+				<div class="inContent" style="display: flex; flex-direction: column; justify-content: space-between; width: 48%">
+					<fieldset >
+						<legend>Использовать словарь</legend>
+						<mat-radio-group class="translateMode" formControlName="translateMode" style="display: flex; flex-direction: column">
+							<mat-radio-button class="yandexRadio" value="0">Яндекс</mat-radio-button>
+							<mat-radio-button class="googleRadio" value="1">Яндекс словарь</mat-radio-button>
+						</mat-radio-group>
+					</fieldset>
+					<fieldset >
+						<legend>Отображать</legend>
+						<mat-radio-group class="showMode" formControlName="showMode"  style="display: flex; flex-direction: column">
+							<mat-radio-button class="showWindow" value="0">Окном</mat-radio-button>
+							<mat-radio-button class="showIcon"  value="1">Иконкой</mat-radio-button>
+						</mat-radio-group>
+					</fieldset>
+				</div>
+
+			</div>
+			<div style="display: flex; flex-direction: row; justify-content: space-around; width: 100%">
+				<fieldset style="width: 97%;margin-bottom: 4px;">
+					<legend>Запуск перевода</legend>
+					<mat-radio-group class="translateEvent" formControlName="translateEvent"  style="display: flex; flex-direction: row ; justify-content: space-around;">
+						<mat-radio-button value="0">Двойной клик</mat-radio-button>
+						<mat-radio-button value="1">Выделение текста</mat-radio-button>
+						<mat-radio-button value="2">Выделение текста + <span style="color: blue;">Ctrl</span> </mat-radio-button>
+					</mat-radio-group>
+				</fieldset>
+			</div>
+
+
+		</div>
+</div>
+
+
+
+

@@ -1,0 +1,9 @@
+iframe#translator-extension-iframe{
+    position: absolute;
+    border: 0 ;
+    top: 10px;
+    left: 10px;
+    z-index: 100000;
+    box-shadow: 0 3px 20px #838383;
+    background: white;
+}
