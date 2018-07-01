@@ -1,4 +1,4 @@
-var translatorExtension ={ body : {}, url : ''};
+var translatorExtension ={};
 //Получение настроек из хранилища
 getSettings().then(sett => {
 	//получили настройки
@@ -10,7 +10,6 @@ getSettings().then(sett => {
 	iframe.src = chrome.runtime.getURL('assets/content/translator-extension/translator-extension.html')  ;
 	//добавление в документ
 	document.body.appendChild(iframe);
-
 	chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 		if(message.type === 'dimensions'){
 			iframe.style.width = message.body.width+'px';
@@ -27,23 +26,42 @@ getSettings().then(sett => {
 
 function actionTrigger(event) {
 	getSettings().then(sett => {
+		//получили настройки
 		translatorExtension.settings = sett;
-		let body = translatorExtension.body,
-			select = document.getSelection().toString().trim(),
-			ctrl = translatorExtension.settings.translateEvent === '2',
-			source = translatorExtension.settings.sourceLanguage.toString(),
-			target = translatorExtension.settings.targetLanguage.toString();
-		if((ctrl && !event.ctrlKey) || !select) return false;
+		translatorExtension.select = document.getSelection().toString().trim();
+		//если не нажата кнопка ctrl, выходим
+		if((translatorExtension.settings.translateEvent === '2' && !event.ctrlKey) || !translatorExtension.select) return false;
 		//Настройка и подготовка к отображению формы переводчика
-		body.sourceLanguageText = translatorExtension.settings.autoSource ? '#' : source.substr(source.indexOf('(') + 1, 2);
-		body.targetLanguageText = target.substr(target.indexOf('(') + 1, 2);
-		body.sourceLanguage = select;
-		translatorExtension.iframe.style.left = window.scrollX + event.clientX +'px';
-		translatorExtension.iframe.style.top = window.scrollY + event.clientY + 'px';
-		translatorExtension.iframe.hidden = false; //отображение
-		//запрос во фрем за переводом
-		chrome.runtime.sendMessage({type : 'translate', body : body})
+		if(translatorExtension.settings.showMode[0] === '1') showTranslatorIcon(event);//отобразить иконку
+		else showTranslatorForm(event); //отобразить форму
 	});
+}
+
+function showTranslatorIcon(event) {
+	let img = document.querySelector('.translatorExtensionIcon');
+	if(!img){
+		img = document.createElement('img');
+		img.src = chrome.runtime.getURL('assets/imgs/translator.png');
+		img.className = 'translatorExtensionIcon';
+		img.addEventListener('click', (ev)=>{
+			img.hidden = true; //скрытие
+			showTranslatorForm(ev);
+		}) ;
+		document.body.appendChild(img);
+		
+	}
+	img.style.left = window.scrollX + event.clientX +'px';
+	img.style.top = window.scrollY + event.clientY + 'px';
+	img.hidden = false; //отображение
+}
+
+function showTranslatorForm(event) {
+
+	translatorExtension.iframe.style.left = window.scrollX + event.clientX +'px';
+	translatorExtension.iframe.style.top = window.scrollY + event.clientY + 'px';
+	translatorExtension.iframe.hidden = false; //отображение
+	//запрос во фрем за переводом
+	chrome.runtime.sendMessage({type : 'translate', select : translatorExtension.select})
 }
 
 function getSettings(){

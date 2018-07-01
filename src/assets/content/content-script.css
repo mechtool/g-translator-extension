@@ -7,3 +7,12 @@ iframe#translator-extension-iframe{
     box-shadow: 0 3px 20px #838383;
     background: white;
 }
+img.translatorExtensionIcon{
+    position: absolute;
+    z-index: 100000;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    box-shadow: 0 0 10px;
+    border-radius: 50%;
+}

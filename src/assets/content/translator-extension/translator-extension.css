@@ -46,12 +46,15 @@ body{
     font-feature-settings: 'liga';
 }
 div.mdl-tooltip{
-    font-size: 12px;
+    font-size: 14px;
 }
 #ms-btn.mdl-button{
     width: 42px;
     height: 42px;
     margin-top: 7px;
+}
+#btn-cls{
+    margin-right: 15px;
 }
 
 div.extensionContainer{
@@ -136,3 +139,22 @@ div.extensionToolBar>button.mdl-button{
 .messageMarker.is-active{
     visibility: visible;
 }
+ul.tr-list{
+    margin: 0;
+    padding-left: 20px;
+    color: #f11c78;
+    font-size: 16px;
+}
+.tr-grey{
+    color: #8a8a8a;
+}
+.r-dark-blue{
+    color: darkblue;
+}
+.tr-blue{
+    color: blue;
+}
+.tr-lite-blue{
+    color: darkcyan;
+}
+

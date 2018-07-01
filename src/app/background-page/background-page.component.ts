@@ -27,6 +27,13 @@ chrome.runtime.onInstalled.addListener(()=>{
         })
     })
 }) ;
+//создать контекстное меню
+chrome.contextMenus.create({id : '1' , title : 'GGG'})  ;
+chrome.contextMenus.onClicked.addListener(()=>{
+       debugger;
+}) ;
+
+
 
 function processResult(result) {//обработка результата и сохранение его в хранилище
 
