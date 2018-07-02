@@ -95,6 +95,10 @@ function prepTranslate(message) {
 				res.status === 200 ? processTranslate(res.data) : processError(res.data);
 			})
 		}
+		else{ //если совпадают ,тогда запустить изменение размеров фрейма на случай, если предыдущий запрос отображал данные
+			// а текущий запрос их очистел и форма осталась пустой и большого размера
+			sendViewMessage();
+		}
 	});
 }
 
