@@ -183,10 +183,12 @@ function getDetails() {//Боьше переведенных данных
 }
 
 function sendMessage(message) { //Отправка сообщения content script
-	chrome.tabs.query({active: true}, function(tab) {
-		chrome.tabs.sendMessage(tab[0].id , message, ()=>{});
-		
-	});
+	chrome.tabs.getCurrent(current => {
+		chrome.tabs.sendMessage(current.id , message, ()=>{});
+	}) ;
+/*	chrome.tabs.query({active: true}, function(tab) {
+	
+	});*/
 }
 
 function sendViewMessage() {
