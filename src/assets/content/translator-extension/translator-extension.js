@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
 	let listeners = [
 		{event : 'click', listener : showHideMessages},
 		{event : 'click', listener : prepTranslate},
-		{event : 'click', listener : getDetails},
 		{event : 'click', listener : function(){sendMessage({type : 'closeTranslator'})}},
 		{event : 'keydown', listener : sendViewMessage},
 	],
@@ -34,7 +33,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
 		}
 	});
 	//Установка обработчиков событий кнопок
-	document.querySelectorAll('#ms-btn, #btn-go, #btn-to, #btn-cls, #sourceLanguage').forEach((element, inx) => {
+	document.querySelectorAll('#ms-btn, #btn-go, #btn-cls, #sourceLanguage').forEach((element, inx) => {
 		let list = listeners[inx];
 		element.addEventListener(list.event, list.listener);
 	});
@@ -176,10 +175,6 @@ function showHideMessages() {//Показать/скрыть сообщения
 		}
 	});
 	sendViewMessage();
-}
-
-function getDetails() {//Боьше переведенных данных
-
 }
 
 function sendMessage(message) { //Отправка сообщения content script
